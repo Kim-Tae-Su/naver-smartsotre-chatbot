@@ -1,11 +1,13 @@
 import os
 import pickle
 
+import pysqlite3
+import sys
+sys.modules["sqlite3"] = pysqlite3
 import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 from dotenv import load_dotenv
 import tiktoken
-import streamlit as st
 # 환경 변수 로드
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -57,6 +59,5 @@ def build_vector_db_if_needed():
         ids = [str(i) for i in range(len(chunks))]
         embeddings = embedding_fn(chunks)
         collection.add(documents=chunks, ids=ids, embeddings=embeddings)
-        st.write("벡터 DB 생성 완료!")
 
     return collection

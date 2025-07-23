@@ -2,7 +2,6 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv
 
-import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 from db import build_vector_db_if_needed
 # 환경변수 로드
