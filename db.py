@@ -39,9 +39,7 @@ def split_text_with_overlap(text, chunk_size, chunk_overlap):
 # 임베딩 함수도 같이 연결하여 자동 임베딩 기능 활성화
 # 컬렉션에 문서, ID, 임베딩 벡터 저장
 def build_vector_db_if_needed():
-    PERSIST_DIR = "./chroma_db"
-    chroma_client = chromadb.PersistentClient(path=PERSIST_DIR)
-
+    chroma_client = chromadb.Client()
     embedding_fn = OpenAIEmbeddingFunction(
         api_key=os.getenv("OPENAI_API_KEY"),
         model_name="text-embedding-3-small"
