@@ -3,7 +3,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
-from db import build_vector_db_if_needed
+from chroma_db import build_vector_db_if_needed
 # 환경변수 로드
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -12,7 +12,7 @@ assert OPENAI_API_KEY, "OPENAI_API_KEY is missing."
 # OpenAI 클라이언트 생성
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# Chroma DB 연결
+# DB 연결
 embedding_fn = OpenAIEmbeddingFunction(api_key=OPENAI_API_KEY, model_name="text-embedding-3-small")
 collection = build_vector_db_if_needed()
 

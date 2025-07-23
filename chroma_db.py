@@ -1,13 +1,11 @@
 import os
 import pickle
 
-import pysqlite3
-import sys
-sys.modules["sqlite3"] = pysqlite3
 import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 from dotenv import load_dotenv
 import tiktoken
+
 # 환경 변수 로드
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
